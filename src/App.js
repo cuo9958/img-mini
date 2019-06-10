@@ -234,9 +234,15 @@ export default class extends React.Component {
     }
 
     async getList() {
-        const ImgQuery = new AV.Query('ImgTask');
-        ImgQuery.equalTo('uid', this.uid);
+        const ImgQuery1 = new AV.Query('ImgTask');
+        ImgQuery1.equalTo('uid', this.uid);
+
+        const ImgQuery2 = new AV.Query('ImgTask');
+        ImgQuery2.greaterThanOrEqualTo('createdAt', new Date(Date.now() - 86400000));
+
+        const ImgQuery = AV.Query.and(ImgQuery1, ImgQuery2);
         ImgQuery.limit(20);
+
         let list = await ImgQuery.find();
         list = list.map(item => {
             return {
