@@ -73,7 +73,12 @@ export default class extends React.Component {
                 </div>)}
             </div>
             <div className="footer">
-                备用域名:&nbsp;&nbsp;<a href="http://mini.guofangchao.com">mini.guofangchao.com</a>&nbsp;&nbsp;<a href="http://mini.bxiaob.top">mini.bxiaob.top</a>
+                <p>
+                    备用域名:&nbsp;&nbsp;<a href="http://mini.guofangchao.com">mini.guofangchao.com</a>&nbsp;&nbsp;<a href="http://mini.bxiaob.top">mini.bxiaob.top</a>
+                </p>
+                <p>
+                    开源地址:&nbsp;&nbsp;<a href="https://github.com/cuo9958/img-mini" target="_blank" rel="noopener noreferrer">Github·web</a>
+                </p>
             </div>
         </div>
     }
