@@ -115,10 +115,38 @@ code {
     margin-right: 10px;
     height: 100px;
     background: #efefef;
+    position: relative;
 }
+
 
 .cache_img {
     width: 100px;
+    margin-top: 50%;
+    transform: translateY(-50%);
+}
+
+.download {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    text-align: center;
+    background: rgba(0, 0, 0, .2);
+    transition: opacity .2s ease-out;
+    opacity: 0;
+}
+
+.download img {
+    margin-top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    opacity: .9;
+}
+
+
+.cache_item:hover .download {
+    opacity: 1;
 }
 
 @media only screen and (max-width:700px) {

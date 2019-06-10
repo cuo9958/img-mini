@@ -82,6 +82,9 @@ export default class extends React.Component {
                     <div className="cache_list">
                         {this.state.caches.map((item, index) => <div className="cache_item" key={index}>
                             <img className="cache_img" src={item.imgPath} alt="" />
+                            <a href={item.imgPath + "?attname=" + this.getName(item.imgPath)} className="download">
+                                <img src="http://static.huocheju.com/web/download2.png" alt="" />
+                            </a>
                         </div>)}
                     </div>
                 </Fragment>}
