@@ -9,6 +9,7 @@
     "customize-cra": "^0.2.13",
     "fingerprintjs2": "^2.1.0",
     "http-proxy-middleware": "^0.19.1",
+    "leancloud-storage": "^3.13.2",
     "rc-upload": "^2.6.7",
     "react": "^16.8.6",
     "react-app-rewired": "^2.1.3",

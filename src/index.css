@@ -99,21 +99,39 @@ code {
     color: #bb0000;
 }
 
-.footer{
+.footer {
     text-align: center;
     font-size: 10px;
     color: #666;
 }
 
-@media only screen and (max-width:700px){
-    .upload_btns{
+.cache_list {
+    margin-top: 10px;
+    display: flex;
+}
+
+.cache_item {
+    width: 100px;
+    margin-right: 10px;
+    height: 100px;
+    background: #efefef;
+}
+
+.cache_img {
+    width: 100px;
+}
+
+@media only screen and (max-width:700px) {
+    .upload_btns {
         bottom: 2%;
     }
-    .upload_btn{
+
+    .upload_btn {
         width: 60px;
         margin-bottom: 0;
     }
-    .upload_btns p{
+
+    .upload_btns p {
         margin-bottom: 0;
     }
 }

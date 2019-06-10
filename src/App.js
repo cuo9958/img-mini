@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Upload from 'rc-upload'
 // import request from './utils/request'
 import { Progress, Empty } from 'antd';
+import AV from 'leancloud-storage';
+import Finger from "fingerprintjs2";
+
+const ImgTask = AV.Object.extend('ImgTask');
+
 
 function getBase64(file) {
     return new Promise((resolve, reject) => {
@@ -17,7 +22,8 @@ export default class extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: []
+            list: [],
+            caches: []
         }
     }
 
@@ -71,6 +77,14 @@ export default class extends React.Component {
                         {item.state === 4 && <span className="err">失败</span>}
                     </div>
                 </div>)}
+                {this.state.caches.length > 0 && <Fragment>
+                    <h3>历史数据</h3>
+                    <div className="cache_list">
+                        {this.state.caches.map((item, index) => <div className="cache_item" key={index}>
+                            <img className="cache_img" src={item.imgPath} alt="" />
+                        </div>)}
+                    </div>
+                </Fragment>}
             </div>
             <div className="footer">
                 <p>
@@ -154,6 +168,10 @@ export default class extends React.Component {
             }
         })
         this.setState({ list });
+        const imgTask = new ImgTask();
+        imgTask.set("uid", this.uid);
+        imgTask.set("imgPath", res.data.url);
+        imgTask.save();
     }
     /**
      * percent
@@ -180,7 +198,49 @@ export default class extends React.Component {
         })
         this.setState({ list });
     }
-    componentDidMount() {
 
+    getUid = async () => {
+        let uid = localStorage.getItem("uid");
+        if (uid) return uid;
+        try {
+            const data = await Finger.getPromise();
+            const values = data.map(function (c) { return c.value })
+            uid = Finger.x64hash128(values.join(''), 31);
+            localStorage.setItem("uid", uid);
+            return uid;
+        } catch (error) {
+            return ""
+        }
+    }
+
+    uid = ''
+    async componentDidMount() {
+        const uid = await this.getUid();
+        if (!uid) return;
+        this.uid = uid;
+
+        this.getList();
+        this.regUser();
+    }
+
+    regUser() {
+        const user = new AV.User();
+        user.setUsername(this.uid);
+        user.setPassword('123');
+        user.signUp();
+    }
+
+    async getList() {
+        const ImgQuery = new AV.Query('ImgTask');
+        ImgQuery.equalTo('uid', this.uid);
+        ImgQuery.limit(20);
+        let list = await ImgQuery.find();
+        list = list.map(item => {
+            return {
+                imgPath: item.attributes.imgPath,
+                create: item.createdAt
+            }
+        });
+        this.setState({ caches: list });
     }
 }
