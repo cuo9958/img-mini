@@ -55,18 +55,19 @@ export default class extends React.Component {
                 {this.state.list.length === 0 && <Empty />}
                 {this.state.list.map((item, index) => <div className="file_box" key={index}>
                     <img className="img" src={item.base64} alt="" />
-                    <div className="size">
+                    {/* <div className="size">
                         {this.getSize(item.size)}
-                    </div>
-                    <Progress
-                        percent={Math.round(item.percent)}
-                    // percent={50}
-                    />
-                    <div className="txts">
+                    </div> */}
+                    <Progress percent={Math.round(item.percent)} >
+                        <span>{this.getSize(item.size)}</span>
                         {item.state === 0 && <span>等待</span>}
                         {item.state === 1 && <span>开始</span>}
-                        {item.state === 2 && item.percent !== 100 && <span>上传{item.percent}%</span>}
+                        {item.state === 2 && item.percent !== 100 && <span>{item.percent}%</span>}
                         {item.state === 2 && item.percent === 100 && <span>转码中</span>}
+                        {item.state === 3 && <span>压缩率{Math.round(item.mini / item.size * 100)}%</span>}
+                        <span></span>
+                    </Progress>
+                    <div className="txts">
                         {item.state === 3 && <a href={item.link + "?attname=" + this.getName(item.link)} target="_blank" rel="noopener noreferrer">下载{this.getSize(item.mini)}</a>}
                         {item.state === 4 && <span className="err">失败</span>}
                     </div>

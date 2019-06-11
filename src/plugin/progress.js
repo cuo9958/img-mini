@@ -8,10 +8,11 @@ export default class extends React.PureComponent {
 
     render() {
         return <div className="progress">
-            <div className="outer">
-                <div className="inner">
-                    <div className="bg" style={{ width: this.props.percent + "%" }}></div>
-                </div>
+            <div className="inner" style={{ width: this.props.percent + "%" }}>
+                <div className="bg"></div>
+            </div>
+            <div className="title">
+                {this.props.children}
             </div>
         </div>
     }

@@ -6,7 +6,7 @@ module.exports = function (app) {
     //     changeOrigin: true
     // }));
     app.use(proxy('/api', {
-        target: 'http://mini.guofangchao.com',
+        target: 'http://mini.bxiaob.top',
         changeOrigin: true
     }));
 };
