@@ -1,10 +1,10 @@
 import React, { Fragment } from 'react';
 import Upload from 'rc-upload'
 // import request from './utils/request'
-import { Progress } from 'antd';
 import AV from 'leancloud-storage';
 import Finger from "fingerprintjs2";
 import Empty from '../plugin/empty';
+import Progress from "../plugin/progress";
 
 const ImgTask = AV.Object.extend('ImgTask');
 
@@ -59,13 +59,6 @@ export default class extends React.Component {
                         {this.getSize(item.size)}
                     </div>
                     <Progress
-                        strokeColor={{
-                            '0%': '#108ee9',
-                            '100%': '#87d068',
-                        }}
-                        showInfo={false}
-                        status="active"
-                        strokeLinecap="square"
                         percent={Math.round(item.percent)}
                     // percent={50}
                     />
