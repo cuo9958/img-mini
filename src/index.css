@@ -18,7 +18,7 @@ code {
 }
 
 .top_box .bg {
-    width: 100%;
+    width: 110%;
 }
 
 .rc-upload {
@@ -118,6 +118,7 @@ code {
     height: 100px;
     background: #efefef;
     position: relative;
+    overflow: hidden;
 }
 
 
