@@ -15,6 +15,7 @@ code {
 .top_box {
     background-color: #285549;
     position: relative;
+    overflow: hidden;
 }
 
 .top_box .bg {
