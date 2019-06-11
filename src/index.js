@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './pages';
 import AV from 'leancloud-storage';
 // import * as serviceWorker from './serviceWorker';
 

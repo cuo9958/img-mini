@@ -19,7 +19,7 @@ code {
 }
 
 .top_box .bg {
-    width: 110%;
+    width: 100%;
 }
 
 .rc-upload {
@@ -153,7 +153,29 @@ code {
     opacity: 1;
 }
 
+.empty {
+    color: rgba(0, 0, 0, 0.25);
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    border: solid 1px #ccc;
+    padding: 50px 0;
+}
+
+.empty_img {
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.empty p {
+    margin: 0;
+}
+
 @media only screen and (max-width:700px) {
+    .top_box .bg {
+        width: 110%;
+    }
+
     .upload_btns {
         bottom: 2%;
     }

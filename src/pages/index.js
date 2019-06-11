@@ -1,9 +1,10 @@
 import React, { Fragment } from 'react';
 import Upload from 'rc-upload'
 // import request from './utils/request'
-import { Progress, Empty } from 'antd';
+import { Progress } from 'antd';
 import AV from 'leancloud-storage';
 import Finger from "fingerprintjs2";
+import Empty from '../plugin/empty';
 
 const ImgTask = AV.Object.extend('ImgTask');
 
@@ -51,7 +52,7 @@ export default class extends React.Component {
             </div>
 
             <div className="file_list">
-                {this.state.list.length === 0 && <Empty className="empty_box" image={Empty.PRESENTED_IMAGE_SIMPLE} />}
+                {this.state.list.length === 0 && <Empty />}
                 {this.state.list.map((item, index) => <div className="file_box" key={index}>
                     <img className="img" src={item.base64} alt="" />
                     <div className="size">
