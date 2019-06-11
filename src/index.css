@@ -108,11 +108,13 @@ code {
 .cache_list {
     margin-top: 10px;
     display: flex;
+    flex-wrap: wrap;
 }
 
 .cache_item {
     width: 100px;
     margin-right: 10px;
+    margin-bottom: 10px;
     height: 100px;
     background: #efefef;
     position: relative;
@@ -161,5 +163,9 @@ code {
 
     .upload_btns p {
         margin-bottom: 0;
+    }
+
+    .file_list {
+        padding: 0 10px;
     }
 }
