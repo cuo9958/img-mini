@@ -18,7 +18,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build && cp -r ./build ./dist",
+    "build": "react-app-rewired build && rm -rf dist/ && cp -rfu ./build/ ./dist/",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
