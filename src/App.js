@@ -210,6 +210,8 @@ export default class extends React.Component {
             const values = data.map(function (c) { return c.value })
             uid = Finger.x64hash128(values.join(''), 31);
             localStorage.setItem("uid", uid);
+            this.uid = uid;
+            this.regUser();
             return uid;
         } catch (error) {
             return ""
@@ -223,7 +225,6 @@ export default class extends React.Component {
         this.uid = uid;
 
         this.getList();
-        this.regUser();
     }
 
     regUser() {
