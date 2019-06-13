@@ -308,4 +308,7 @@ p {
     .file_list {
         padding: 0 10px;
     }
+    .vs img {
+        width: 150px;
+    }
 }
