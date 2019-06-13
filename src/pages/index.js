@@ -102,7 +102,7 @@ export default class extends React.Component {
             <div className="footer">
                 <div className="info">
                     <p>
-                        备用域名:&nbsp;&nbsp;<a href="http://9l9.cc">9l9.cc</a>&nbsp;&nbsp;<a href="http://mini.bxiaob.top">mini.bxiaob.top</a>
+                        备用域名:&nbsp;&nbsp;<a href="http://www.9l9.cc">9l9.cc</a>&nbsp;&nbsp;<a href="http://mini.bxiaob.top">mini.bxiaob.top</a>
                     </p>
                 </div>
                 <div className="auther">
