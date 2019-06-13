@@ -12,6 +12,10 @@ code {
         monospace;
 }
 
+p {
+    margin: 0;
+}
+
 .top_box {
     background-color: #285549;
     position: relative;
@@ -56,7 +60,7 @@ code {
 .file_list {
     max-width: 800px;
     margin: 20px auto;
-    min-height: 450px;
+    min-height: 200px;
 }
 
 .file_box {
@@ -101,9 +105,30 @@ code {
 }
 
 .footer {
+    margin-top: 10px;
     text-align: center;
     font-size: 10px;
     color: #666;
+    background: #40444f;
+}
+
+.footer .info {
+    padding: 15px;
+    color: #fff;
+}
+
+.footer .info a {
+    color: #fff;
+}
+
+.footer .auther {
+    padding: 10px;
+    background: #363a43;
+    color: #788287;
+}
+
+.footer .auther a {
+    color: #788287;
 }
 
 .cache_list {
@@ -225,18 +250,42 @@ code {
     }
 }
 
-/* .progress .bg::before {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: #fff;
-    border-radius: 10px;
-    opacity: 0;
-    animation: ant-progress-active 2.4s cubic-bezier(0.23, 1, 0.32, 1) infinite;
-    content: '';
-} */
+.container {
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.container .vs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+    background: #e3edf1;
+}
+
+.vs .before,
+.vs .after {
+    width: 280px;
+    text-align: center;
+}
+
+.vs .mid {
+    width: 30px;
+}
+
+.vs img {
+    width: 200px;
+}
+
+.vs p {
+    margin-top: 10px;
+    font-size: 12px;
+}
+
+.vs p span {
+    margin: 0 6px;
+    color: #ff0000;
+}
 
 @media only screen and (max-width:700px) {
     .top_box .bg {
