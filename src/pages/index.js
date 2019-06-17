@@ -107,7 +107,7 @@ export default class extends React.Component {
                 </div>
                 <div className="auther">
                     <p>
-                        开源地址:&nbsp;&nbsp;<a href="https://github.com/cuo9958/img-mini" target="_blank" rel="noopener noreferrer">Github·web</a>
+                        开源地址:&nbsp;&nbsp;<a href="https://github.com/cuo9958/img-mini" target="_blank" rel="noopener noreferrer">Github·web</a>&nbsp;&nbsp;<a href="https://github.com/cuo9958/img-mini-server" target="_blank" rel="noopener noreferrer">Github·server</a>
                     </p>
                 </div>
             </div>
