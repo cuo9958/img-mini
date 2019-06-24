@@ -7,7 +7,8 @@ import AV from 'leancloud-storage';
 
 AV.init({
     appId: "0RNm5tvcxjNom8inbeu9jD9l-gzGzoHsz",
-    appKey: "iJwbBLQWJoy18aJHaGPRjTTO"
+    appKey: "iJwbBLQWJoy18aJHaGPRjTTO",
+    serverURLs: 'https://avoscloud.com'
 });
 
 ReactDOM.render(<App />, document.getElementById('root'));
