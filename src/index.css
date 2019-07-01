@@ -287,6 +287,80 @@ p {
     color: #ff0000;
 }
 
+.tools {
+    margin-top: 10px;
+    text-align: center;
+    display: flex;
+}
+
+.radio {
+    margin: 0 auto;
+    border-radius: 3px;
+    font-size: 12px;
+    border: sloid 1px #fff;
+    display: flex;
+}
+
+.radio .tab {
+    background: #efefef;
+    color: #666;
+    text-align: center;
+    padding: 5px 8px;
+    cursor: pointer;
+    transition: all ease-out .3s;
+}
+
+.radio .tab.active {
+    background: #3ee283;
+    color: #fff;
+}
+
+.select_box {
+    position: absolute;
+    bottom: 10%;
+    width: 100%;
+    text-align: center;
+    color: #eee;
+    cursor: pointer;
+}
+
+.select_box .select_label {
+    cursor: pointer;
+}
+
+.select_box input {
+    display: none;
+}
+
+.cropper_box {
+    margin-top: 10px;
+}
+
+.cropper_bootom {
+    margin-top: 10px;
+    text-align: center;
+    font-size: 12px;
+}
+
+.cropper_bootom input {
+    width: 40px;
+    margin-right: 10px;
+    padding: 5px;
+    text-align: center;
+}
+
+.cropper_btn {
+    outline: none;
+    background: #285549;
+    color: #fff;
+    padding: 5px 10px;
+    border: none;
+}
+
+.cropper_btn:active {
+    box-shadow: 0 0 5px 2px #fff inset;
+}
+
 @media only screen and (max-width:700px) {
     .top_box .bg {
         width: 110%;
@@ -307,7 +381,9 @@ p {
 
     .file_list {
         padding: 0 10px;
+        margin: 10px auto;
     }
+
     .vs img {
         width: 150px;
     }

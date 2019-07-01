@@ -5,6 +5,8 @@ import AV from 'leancloud-storage';
 import Finger from "fingerprintjs2";
 import Empty from '../plugin/empty';
 import Progress from "../plugin/progress";
+import Cropper from 'react-cropper';
+import 'cropperjs/dist/cropper.css';
 
 const ImgTask = AV.Object.extend('ImgTask');
 
@@ -24,7 +26,13 @@ export default class extends React.Component {
         super(props);
         this.state = {
             list: [],
-            caches: []
+            caches: [],
+            index: 0,
+            imgSrc: '',
+            imgData: {
+                width: 100,
+                height: 100
+            }
         }
     }
 
@@ -33,7 +41,7 @@ export default class extends React.Component {
         return <div>
             <div className="top_box">
                 <img className="bg" src="http://static.huocheju.com/web/top_bg.jpg" alt="" />
-                <Upload type="drag" className="upload_box"
+                {this.state.index === 0 && <Upload type="drag" className="upload_box"
                     accept={"image/*"}
                     multiple={true}
                     action="/api/upload/img"
@@ -48,9 +56,50 @@ export default class extends React.Component {
                         <p>请上传图片{"{ jpg, png, gif, jpeg }"} Max:10MB</p>
                         <small>图片将完美压缩</small>
                     </div>
-                </Upload>
+                </Upload>}
+                {this.state.index === 1 && <div className="upload_box">
+                    <div className="select_box">
+                        <label htmlFor="select_file" className="select_label">
+                            <input ref="select_file"
+                                onChange={e => this.changeFile()}
+                                type="file"
+                                name="select_file"
+                                accept={"image/*"}
+                                id="select_file" />
+                            <img className="upload_btn" src="http://static.huocheju.com/web/top_upload_btn.png" alt="" />
+                            <p>请上传图片{"{ jpg, png, jpeg }"} Max:10MB</p>
+                            <small>在线即可裁剪压缩</small>
+                        </label>
+                    </div>
+                </div>}
             </div>
-
+            <div className="tools">
+                <div className="radio">
+                    <div onClick={() => this.changeTab(0)} className={this.state.index === 0 ? "tab active" : "tab"}>压缩图片</div>
+                    <div onClick={() => this.changeTab(1)} className={this.state.index === 1 ? "tab active" : "tab"}>裁剪图片</div>
+                </div>
+            </div>
+            {this.state.index === 1 && !!this.state.imgSrc &&
+                <div className="cropper_box">
+                    <Cropper ref='cropper'
+                        src={this.state.imgSrc}
+                        style={{ height: 400, width: '100%' }}
+                        guides={false}
+                        aspectRatio={this.state.imgData.width / this.state.imgData.height}
+                    />
+                    <div className="cropper_bootom">
+                        <label>宽：</label>
+                        <input type="text" ref="imgW"
+                            onInput={e => this.onDataChangeW(e)}
+                            defaultValue={this.state.imgData.width} />
+                        <label>高：</label>
+                        <input type="text" ref="imgH"
+                            onInput={e => this.onDataChangeH(e)}
+                            defaultValue={this.state.imgData.height} />
+                        <button onClick={() => this.uploadCropper()} className="cropper_btn">上传</button>
+                    </div>
+                </div>
+            }
             <div className="file_list">
                 {this.state.list.length === 0 && <Empty />}
                 {this.state.list.map((item, index) => <div className="file_box" key={index}>
@@ -248,6 +297,76 @@ export default class extends React.Component {
         user.signUp();
     }
 
+    changeTab(index) {
+        this.setState({ index })
+    }
+
+    changeFile() {
+        const files = this.refs.select_file.files;
+        if (!files || files.length < 1) return;
+        const fsreader = new FileReader();
+        fsreader.onload = () => {
+            this.setState({
+                imgSrc: fsreader.result
+            })
+        }
+        this.type = files[0].type
+        fsreader.readAsDataURL(files[0]);
+    }
+    onDataChangeW(e) {
+        const w = this.refs.imgW.value * 1;
+        if (isNaN(w)) return;
+        const imgData = this.state.imgData;
+        imgData.width = w;
+        this.setState({ imgData });
+    }
+    onDataChangeH(e) {
+        const h = this.refs.imgH.value * 1;
+        if (isNaN(h)) return;
+        const imgData = this.state.imgData;
+        imgData.height = h;
+        this.setState({ imgData });
+    }
+    type = ''
+    uploadCropper() {
+        const data = this.refs.cropper.getCroppedCanvas().toDataURL(this.type);
+        const uid = Date.now();
+        this.setState({
+            list: this.state.list.concat({
+                name: 'test',
+                size: data.length,
+                uid,
+                percent: 0,
+                state: 0,
+                mini: 1,
+                link: '',
+                base64: data
+            })
+        })
+        const xhr = new XMLHttpRequest();
+        const fd = new FormData();
+        fd.append("file", this.convertBase64UrlToBlob(data));
+        fd.append("uid", localStorage.getItem("uid") || '');
+        xhr.open('POST', '/api/upload/img')
+        xhr.onload = () => {
+            // this.onSuccess()
+            const res = JSON.parse(xhr.responseText);
+            console.log(res)
+            this.onSuccess(res, { uid });
+        }
+        xhr.upload.onprogress = (e) => {
+            this.onProgress({ percent: e.loaded / e.total * 100 }, { name: 'test', uid });
+        }
+        xhr.send(fd)
+    }
+    convertBase64UrlToBlob(urlData) {
+        let arr = urlData.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
+        while (n--) {
+            u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new Blob([u8arr], { type: mime });
+    }
     async getList() {
         const ImgQuery1 = new AV.Query('ImgTask');
         ImgQuery1.equalTo('uid', this.uid);
