@@ -113,7 +113,7 @@ export default class extends React.Component {
                         {item.state === 1 && <span>开始</span>}
                         {item.state === 2 && item.percent !== 100 && <span>{item.percent}%</span>}
                         {item.state === 2 && item.percent === 100 && <span>转码中</span>}
-                        {item.state === 3 && <span>已减少率{Math.round(1 - item.mini / item.size * 100)}%</span>}
+                        {item.state === 3 && <span>已减少{Math.round(100 - item.mini / item.size * 100)}%</span>}
                         <span></span>
                     </Progress>
                     <div className="txts">
