@@ -40,7 +40,7 @@ export default class extends React.Component {
 
         return <div>
             <div className="top_box">
-                <img className="bg" src="http://static.huocheju.com/web/top_bg.jpg" alt="" />
+                <img className="bg" src="http://static.huocheju.com/web/top_l_bg.jpg" alt="" />
                 {this.state.index === 0 && <Upload type="drag" className="upload_box"
                     accept={"image/*"}
                     multiple={true}
@@ -151,7 +151,7 @@ export default class extends React.Component {
             <div className="footer">
                 <div className="info">
                     <p>
-                        备用域名:&nbsp;&nbsp;<a href="http://www.9l9.cc">9l9.cc</a>&nbsp;&nbsp;<a href="http://mini.bxiaob.top">mini.bxiaob.top</a>
+                        备用域名:&nbsp;&nbsp;<a href="http://www.9l9.cc">9l9.cc:迈阿密</a>&nbsp;&nbsp;<a href="http://mini.bxiaob.top">mini.bxiaob.top</a>&nbsp;&nbsp;<a href="http://mini.guofangchao.com">mini.guofangchao.com</a>
                     </p>
                 </div>
                 <div className="auther">
