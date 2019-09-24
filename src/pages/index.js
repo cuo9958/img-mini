@@ -40,7 +40,7 @@ export default class extends React.Component {
 
         return <div>
             <div className="top_box">
-                <img className="bg" src="http://static.huocheju.com/web/top_l_bg.jpg" alt="" />
+                <img className="bg" src="http://resource.guofangchao.com/top_l_bg.jpg" alt="" />
                 {this.state.index === 0 && <Upload type="drag" className="upload_box"
                     accept={"image/*"}
                     multiple={true}
