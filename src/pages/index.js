@@ -52,7 +52,7 @@ export default class extends React.Component {
                     onProgress={this.onProgress}
                     onError={this.onError} >
                     <div className="upload_btns">
-                        <img className="upload_btn" src="http://static.huocheju.com/web/top_upload_btn.png" alt="" />
+                        <img className="upload_btn" src="http://resource.guofangchao.com/web/top_upload_btn.png" alt="" />
                         <p>请上传图片{"{ jpg, png, gif, jpeg }"} Max:10MB</p>
                         <small>图片将完美压缩</small>
                     </div>
@@ -66,7 +66,7 @@ export default class extends React.Component {
                                 name="select_file"
                                 accept={"image/*"}
                                 id="select_file" />
-                            <img className="upload_btn" src="http://static.huocheju.com/web/top_upload_btn.png" alt="" />
+                            <img className="upload_btn" src="http://resource.guofangchao.com/web/top_upload_btn.png" alt="" />
                             <p>请上传图片{"{ jpg, png, jpeg }"} Max:10MB</p>
                             <small>在线即可裁剪压缩</small>
                         </label>
@@ -127,7 +127,7 @@ export default class extends React.Component {
                         {this.state.caches.map((item, index) => <div className="cache_item" key={index}>
                             <img className="cache_img" src={item.imgPath} alt="" />
                             <a href={item.imgPath + "?attname=" + this.getName(item.imgPath)} className="download">
-                                <img src="http://static.huocheju.com/web/download2.png" alt="" />
+                                <img src="http://resource.guofangchao.com/web/download2.png" alt="" />
                             </a>
                         </div>)}
                     </div>
