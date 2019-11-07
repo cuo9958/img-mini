@@ -375,7 +375,7 @@ export default class extends React.Component {
         ImgQuery2.greaterThanOrEqualTo('createdAt', new Date(Date.now() - 86400000));
 
         const ImgQuery = AV.Query.and(ImgQuery1, ImgQuery2);
-        ImgQuery.limit(20);
+        ImgQuery.limit(28);
 
         let list = await ImgQuery.find();
         list = list.map(item => {
