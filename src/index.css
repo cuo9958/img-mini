@@ -135,10 +135,11 @@ p {
     margin-top: 10px;
     display: flex;
     flex-wrap: wrap;
+    width:810px;
 }
 
 .cache_item {
-    width: 100px;
+    width: 105px;
     margin-right: 10px;
     margin-bottom: 10px;
     height: 100px;
@@ -149,7 +150,7 @@ p {
 
 
 .cache_img {
-    width: 100px;
+    width: 105px;
     margin-top: 50%;
     transform: translateY(-50%);
 }
